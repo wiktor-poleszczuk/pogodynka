@@ -1,0 +1,62 @@
+App\Entity\Location:
+    properties:
+        locality:
+            - NotBlank:
+                  groups: [create, edit]
+                  message: 'Locality cannot be empty.'
+            - Length:
+                  min: 2
+                  max: 255
+                  groups: [create, edit]
+        country:
+            - NotBlank:
+                  groups: [create]
+                  message: 'Please select a country.'
+        latitude:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: -90
+                  max: 90
+                  groups: [create, edit]
+        longitude:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: -180
+                  max: 180
+                  groups: [create, edit]
+
+App\Entity\Measurement:
+    properties:
+        location:
+            - NotNull:
+                  groups: [create, edit]
+                  message: 'Please select a location.'
+        date:
+            - NotBlank:
+                  groups: [create]
+        temperature:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: -90
+                  max: 60
+                  groups: [create, edit]
+        pressure:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: 870
+                  max: 1085
+                  groups: [create, edit]
+        precipitation:
+            - NotBlank:
+                  groups: [create]
+            - Range:
+                  min: 0
+                  max: 100
+                  groups: [create, edit]
+        cloudiness:
+            - NotBlank:
+                  groups: [create]
